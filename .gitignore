@@ -1,0 +1,3 @@
+services/django-services/.env
+services/node-services/.env
+frontend/.env
