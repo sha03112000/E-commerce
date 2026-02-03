@@ -71,6 +71,8 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "AUTH_HEADER_TYPES": ("Bearer",),
     "SIGNING_KEY": config("JWT_SECRET"),
+    "ROTATE_REFRESH_TOKENS": False, 
+    "BLACKLIST_AFTER_ROTATION": False,
 }
 
 MIDDLEWARE = [
