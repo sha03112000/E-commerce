@@ -4,17 +4,14 @@ import { AuthRequest } from "../middleware/auth";
 
 // CREATE PRODUCT (Vendor/Admin)
 export const createProduct = async (req: AuthRequest, res: Response) => {
-  try {
-    const product = await Product.create({
-      ...req.body,
-      vendor_id: req.user!.user_id,
-    });
+  const product = await Product.create({
+    ...req.body,
+    vendor_id: req.user!.user_id,
+  });
 
-    return res.status(201).json(product);
-  } catch (err) {
-    return res.status(400).json({ message: "Product creation failed" });
-  }
+  return res.status(201).json(product);
 };
+
 
 // LIST PRODUCTS (Public)
 export const listProducts = async (req: Request, res: Response) => {

@@ -9,6 +9,7 @@ import productRoutes from './routes/ProductRoutes'
 dotenv.config()
 
 const app = express()
+app.use(express.json());
 
 
 app.use("/api/products", productRoutes); // Product routes
@@ -16,6 +17,8 @@ app.use("/api/products", productRoutes); // Product routes
 
 
 const PORT = Number(process.env.PORT) || 4000;
+
+console.log("🔥 server reloaded");
 
 const startServer = async () => {
   await connectMongo();
