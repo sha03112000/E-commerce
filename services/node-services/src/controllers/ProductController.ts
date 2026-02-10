@@ -1,16 +1,17 @@
 import { Request, Response } from "express";
 import Product from "../models/Product";
 import { AuthRequest } from "../middleware/auth";
+import { catchAsync } from "../utils/catchAsync";
 
 // CREATE PRODUCT (Vendor/Admin)
-export const createProduct = async (req: AuthRequest, res: Response) => {
+export const createProduct = catchAsync(async (req: AuthRequest, res: Response) => {
   const product = await Product.create({
     ...req.body,
     vendor_id: req.user!.user_id,
   });
 
   return res.status(201).json(product);
-};
+});
 
 
 // LIST PRODUCTS (Public)
